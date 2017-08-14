@@ -8,6 +8,7 @@ import {MainComponent} from './components/main/main.component';
 import {BooksListComponent} from './components/books-list/books-list.component';
 import {ListComponent} from './components/list/list.component';
 import {BookComponent} from './components/book/book.component';
+import {AuthInterceptor} from './interceptors/auth.interceptors';
 
 
 
@@ -25,7 +26,7 @@ import {BookComponent} from './components/book/book.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [AuthInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
