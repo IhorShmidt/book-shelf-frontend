@@ -15,7 +15,6 @@ export const routes: Routes = [
         component: AuthComponent,
         children: [
             {path: 'login', component: LoginComponent},
-            {path: 'login', component: LoginComponent},
             {path: '', redirectTo: 'login', pathMatch: 'full'},
             {path: '404', component: NotFoundComponent},
             {path: '**', redirectTo: '/404'}
@@ -23,7 +22,7 @@ export const routes: Routes = [
     },
     {
         path: 'content',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         component: MainComponent,
         children: [
             {
