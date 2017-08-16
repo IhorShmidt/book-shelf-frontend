@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth/auth.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,28 +8,20 @@ import {AuthService} from '../../../services/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user = {
-    email: '',
-    password: ''
-  };
-  ok: boolean;
+  ok;
 
   constructor(private authService: AuthService) {
   }
 
-  checkValidation(invalidEmail: boolean, invalidPassword: boolean) {
-    if (invalidEmail || invalidPassword) {
-      this.ok = false;
-    } else {
-      this.logIn(this.user.email, this.user.password);
-    }
+  checkValidation(form: NgForm) {
+    const value = form.value;
+    this.logIn(value.email, value.password);
   }
 
   logIn(email: string, password: string) {
-    console.log('meow');
-    // this.authService.logIn(email, password).subscribe(
-    //   () => this.ok = true,
-    //   () => this.ok = false);
+    this.authService.logIn(email, password).subscribe(
+    () => this.ok = true,
+    () => this.ok = false);
   }
 
 }
