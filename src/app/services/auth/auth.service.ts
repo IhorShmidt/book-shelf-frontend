@@ -21,10 +21,9 @@ export class AuthService {
 
   logIn(email: string, password: string) {
     return this.http.post(this.apiUrl, {email, password}).flatMap(res => {
-        localStorage.clear();
         localStorage.setItem('token', res['token']);
         localStorage.setItem('user', JSON.stringify(res['user']));
-        this.token = res['accessToken'];
+        this.token = res['token'];
         this.router.navigate(['../content']);
         return Observable.of(true);
       }

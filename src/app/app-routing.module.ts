@@ -22,19 +22,19 @@ export const routes: Routes = [
     },
     {
         path: 'content',
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         component: MainComponent,
         children: [
             {
                 path: 'books',
                 component: BooksListComponent,
                 children: [
-                    {path: 'list', component: ListComponent},
+                    {path: '', component: ListComponent},
                     {path: 'book', component: BookComponent},
-                    {path: 'book/:id', component: BookComponent},
-                    {path: '', redirectTo: 'list', pathMatch: 'full'}
+                    {path: ':id', component: BookComponent}
                 ]
-            }
+            },
+            {path: '', redirectTo: 'books/', pathMatch: 'full'}
         ]
     }
 ];
