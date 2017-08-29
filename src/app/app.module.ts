@@ -15,7 +15,8 @@ import {routing} from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {HttpClientModule} from '@angular/common/http';
-import {AuthGuard} from './guards/auth-guard.guard';
+import { NavbarComponent } from './components/navbar/navbar.component';
+// import {AuthGuard} from './guards/auth-guard.guard';
 
 
 
@@ -29,7 +30,8 @@ import {AuthGuard} from './guards/auth-guard.guard';
     BooksListComponent,
     ListComponent,
     BookComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +43,8 @@ import {AuthGuard} from './guards/auth-guard.guard';
   ],
   providers: [
     AuthInterceptor,
-    AuthService,
-    AuthGuard
+    // AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

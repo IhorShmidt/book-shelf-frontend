@@ -34,9 +34,10 @@ export class AuthService {
     this.token = localStorage.getItem('token') || token;
     if (!this.token) {
       this.router.navigate(['auth']);
-      return !!this.token;
+      return false;
+      // return !!this.token;
     }
-    return this.http.get(this.apiUrl).map(res => !!this.token);
+    return this.http.get(this.apiUrl).map(res => true);
   }
 
   logOut() {
