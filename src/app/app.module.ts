@@ -15,7 +15,7 @@ import {routing} from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {HttpClientModule} from '@angular/common/http';
-import {AuthGuard} from './guards/auth-guard.guard';
+// import {AuthGuard} from './guards/auth-guard.guard';
 
 
 
@@ -41,8 +41,8 @@ import {AuthGuard} from './guards/auth-guard.guard';
   ],
   providers: [
     AuthInterceptor,
-    AuthService,
-    AuthGuard
+    // AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
