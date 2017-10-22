@@ -9,7 +9,7 @@ export class BooksService {
     apiUrl: string;
 
     constructor(private http: HttpClient) {
-        this.apiUrl = `${environment.apiUrl}/books/`;
+        this.apiUrl = `${environment.apiUrl}/book`;
     }
 
     addBook(book: Book): Observable<any> {

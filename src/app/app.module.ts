@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { WishListComponent } from './components/wish-list/wish-list.component';
+import {BooksService} from './services/books/books.service';
 // import {AuthGuard} from './guards/auth-guard.guard';
 
 
@@ -31,7 +33,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ListComponent,
     BookComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   providers: [
     AuthInterceptor,
+    BooksService,
     // AuthGuard,
     AuthService
   ],
