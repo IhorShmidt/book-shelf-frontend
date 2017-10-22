@@ -30,7 +30,7 @@ export const routes: Routes = [
                 path: 'books',
                 component: BooksListComponent,
                 children: [
-                    // {path: '', component: ListComponent},
+                    {path: '', component: ListComponent},
                     // {path: 'book', component: BookComponent},
                     {path: ':id', component: BookComponent}
                 ]
