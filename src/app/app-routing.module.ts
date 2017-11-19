@@ -7,6 +7,7 @@ import {BooksListComponent} from './components/books-list/books-list.component';
 import {ListComponent} from './components/list/list.component';
 import {BookComponent} from './components/book/book.component';
 import { Routes, RouterModule } from '@angular/router';
+import {WishListComponent} from "./components/wish-list/wish-list.component";
 
 export const routes: Routes = [
     {path: '', redirectTo: 'content', pathMatch: 'full'},
@@ -22,17 +23,21 @@ export const routes: Routes = [
     },
     {
         path: 'content',
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         component: MainComponent,
         children: [
             {
                 path: 'books',
-                component: BooksListComponent,
+                component: ListComponent,
                 children: [
-                    {path: '', component: ListComponent},
-                    {path: 'book', component: BookComponent},
+                    // {path: '', component: ListComponent},
+                    // {path: 'book', component: BookComponent},
                     {path: ':id', component: BookComponent}
                 ]
+            },
+            {
+              path: 'wishlist',
+              component: WishListComponent
             },
             {path: '', redirectTo: 'books/', pathMatch: 'full'}
         ]

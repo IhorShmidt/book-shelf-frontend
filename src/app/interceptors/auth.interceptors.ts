@@ -1,8 +1,8 @@
 import {
     HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
-    HttpResponse
+    HttpResponse, HTTP_INTERCEPTORS
 } from '@angular/common/http';
-import {Injectable, Injector} from '@angular/core'
+import {Injectable, Injector} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from '../services/auth/auth.service';
 import {environment} from '../../environments/environment';
@@ -19,8 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
         const authHeader = auth.token;
-        const headers = new Headers({});
-        const authReq = req.clone({headers: req.headers.set('Authorization', authHeader).set('Content-Type', 'application/json')});
+        const authReq = req.clone({headers: req.headers.set('Authorization', authHeader)});
 
         return next.handle(authReq).do((event: HttpEvent<any>) => {
             if (event instanceof HttpResponse) {
@@ -34,3 +33,9 @@ export class AuthInterceptor implements HttpInterceptor {
         });
     }
 }
+
+export const appInterceptors = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true
+};

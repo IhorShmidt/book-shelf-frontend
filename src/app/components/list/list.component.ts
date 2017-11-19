@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BooksService} from '../../services/books/books.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  books: any = [];
 
-  constructor() { }
+  constructor(private bookService: BooksService) {
+  }
 
   ngOnInit() {
+    this.bookService.list()
+      .subscribe((list) => {
+        this.books = list;
+      });
   }
 
 }
