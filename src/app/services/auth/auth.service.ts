@@ -24,7 +24,7 @@ export class AuthService {
         localStorage.setItem('token', res['token']);
         localStorage.setItem('user', JSON.stringify(res['user']));
         this.token = res['token'];
-        this.router.navigate(['../content']);
+        this.router.navigate(['/']);
         return Observable.of(true);
       }
     );
